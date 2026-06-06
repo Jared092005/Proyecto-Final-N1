@@ -34,4 +34,5 @@ function mostrarApartamentos() {
   cardsApartamentos.innerHTML = htmlGenerado;
 }
 
+let variable = "hola";
 export { compilarDatos, mostrarApartamentos };
