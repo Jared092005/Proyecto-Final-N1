@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./scripts/main.js"></script>
+    <title>proyecto-windbnb</title>
+  </head>
+  <body class="min-h-screen">
+    <header class="flex justify-between">
+      <img
+        src="./designs/icons/logo-f7862584.svg"
+        alt="logo-windbnb"
+        class="p-4 lg:px-10 lg:py-6"
+      />
+      <span class="flex px-7 py-5 relative lg:w-1/2 lg:justify-center">
+        <input
+          type="text"
+          class="p-2.5 rounded-l-2xl shadow w-33 outline-none"
+          placeholder="  Add location"
+        />
+        <input
+          class="p-2.5 shadow w-33 outline-none"
+          type="text"
+          placeholder="   Add guests"
+        />
+        <div
+          class="absolute right-10 top-5 p-3.5 shadow rounded-r-2xl lg:right-20"
+        >
+          <img src="./designs/icons/search.svg" alt="" class="w-4" />
+        </div>
+      </span>
+    </header>
+    <main>
+      <section class="flex justify-between px-4 py-4">
+        <h1 class="font-bold text-2xl">Stays in Finland</h1>
+        <p class="text-gray-600 pt-1">12+ Stays</p>
+      </section>
+      <section id="cards-apartamentos" class="grid grid-cols-1 lg:grid-cols-3">
+        <article class="flex flex-col gap-2">
+          <span class="flex px-6"
+            ><img
+              src="https://images.unsplash.com/photo-1505873242700-f289a29e1e0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=2255&q=80"
+              alt=""
+              class="rounded-3xl"
+          /></span>
+          <div class="flex justify-between px-5 py-2">
+            <p class="text-gray-600">Entire apartment . 2 beds</p>
+            <p>⭐ 4.4</p>
+          </div>
+          <div class="py-1 px-5">
+            <p class="font-semibold">Stylist aparment in center of the city</p>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
