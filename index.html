@@ -9,13 +9,17 @@
     <title>proyecto-windbnb</title>
   </head>
   <body class="min-h-screen">
-    <header class="lg:flex lg:justify-between">
+    <header
+      class="transition duration-500 delay-300 ease-in-out lg:flex lg:justify-between"
+    >
       <img
         src="./designs/icons/logo-f7862584.svg"
         alt="logo-windbnb"
         class="p-4 lg:px-10 lg:py-6"
       />
-      <span class="flex px-7 py-5 relative lg:w-1/2 lg:justify-center">
+      <span
+        class="flex px-7 py-5 relative justify-center lg:w-1/2 lg:justify-center"
+      >
         <input
           type="text"
           class="p-2.5 rounded-l-2xl shadow w-33 outline-none"
@@ -28,10 +32,7 @@
           placeholder="   Add guests"
           id="input-guest"
         />
-        <button
-          id="search-icon"
-          class="absolute right-10 top-5 p-3.5 shadow rounded-r-2xl lg:right-20"
-        >
+        <button id="search-icon" class="p-3.5 shadow rounded-r-2xl lg:right-20">
           <img src="./designs/icons/search.svg" alt="search-icon" class="w-4" />
         </button>
       </span>
@@ -70,6 +71,7 @@
           >
           <input
             type="text"
+            readonly
             placeholder="  "
             class="w-full outline-none pl-2 lg:w-90"
             id="input-guests"
@@ -155,7 +157,7 @@
       </section>
       <section
         id="cards-apartamentos"
-        class="grid grid-cols-1 gap-4 lg:grid-cols-3 z-10"
+        class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 z-10"
       ></section>
     </main>
   </body>
