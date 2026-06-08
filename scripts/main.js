@@ -1,3 +1,7 @@
-import { compilarDatos, mostrarApartamentos } from "./funciones.js";
+import {
+  compilarDatos,
+  mostrarApartamentos,
+  mostrarFiltros,
+} from "./funciones.js";
 
 mostrarApartamentos();
