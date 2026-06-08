@@ -20,11 +20,13 @@
           type="text"
           class="p-2.5 rounded-l-2xl shadow w-33 outline-none"
           placeholder="  Add location"
+          id="input-location"
         />
         <input
           class="p-2.5 shadow w-33 outline-none"
           type="text"
           placeholder="   Add guests"
+          id="input-guest"
         />
         <div
           class="absolute right-10 top-5 p-3.5 shadow rounded-r-2xl lg:right-20"
@@ -33,6 +35,90 @@
         </div>
       </span>
     </header>
+    <section
+      id="filters"
+      class="hidden absolute bg-white w-full py-6 px-6 top-0"
+    >
+      <span class="flex justify-between">
+        <h2 class="font-semibold">Edit your search</h2>
+        <img
+          src="./designs/icons/cancel-close-delete-svgrepo-com.svg"
+          alt="go back"
+          class="w-7"
+          id="close-button"
+        />
+      </span>
+      <section class="w-full mt-4 relative">
+        <div class="pt-6 pb-4 px-3 rounded-t-xl shadow">
+          <label
+            for="Location"
+            class="absolute text-[14px] font-semibold top-1 left-5"
+            >Location</label
+          >
+          <input
+            type="text"
+            placeholder="  Where are you going?"
+            class="w-full outline-none"
+          />
+        </div>
+        <div class="pt-6 pb-4 px-3 rounded-b-xl shadow">
+          <label
+            for="Guests"
+            class="absolute text-[14px] font-semibold bottom-9 left-5"
+            >Guests</label
+          >
+          <input type="text" placeholder="  " class="w-full outline-none" />
+        </div>
+      </section>
+      <section class="flex flex-col mt-8">
+        <span class="w-full"
+          ><h2 class="font-semibold">Adults</h2>
+          <p class="text-gray-400">Ages 13 or above</p>
+          <div class="flex justify-between w-33 py-4 px-1">
+            <button
+              class="bg-gray-300 w-6 rounded-md border border-gray-500 active:bg-gray-400"
+            >
+              -
+            </button>
+            <p>numero</p>
+            <button
+              class="bg-gray-300 w-6 rounded-md border border-gray-500 active:bg-gray-400"
+            >
+              +
+            </button>
+          </div>
+        </span>
+        <span class="w-full mt-8"
+          ><h2 class="font-semibold">Children</h2>
+          <p class="text-gray-400">Ages 13 or above</p>
+          <div class="flex justify-between w-33 py-4 px-1">
+            <button
+              class="bg-gray-300 w-6 rounded-md border border-gray-500 active:bg-gray-400"
+            >
+              -
+            </button>
+            <p>numero</p>
+            <button
+              class="bg-gray-300 w-6 rounded-md border border-gray-500 active:bg-gray-400"
+            >
+              +
+            </button>
+          </div>
+        </span>
+      </section>
+      <span class="w-full flex justify-center"
+        ><div
+          class="flex mt-35 mbs-2.5 justify-center border py-2 px-2 w-30 gap-3 bg-[#e65757] text-white rounded-2xl active:bg-[#dd3838]"
+        >
+          <img
+            src="./designs/icons/icons8-search.svg"
+            alt="search"
+            class="w-4"
+          />
+          <p>search</p>
+        </div></span
+      >
+    </section>
     <main>
       <section class="flex justify-between px-4 py-4">
         <h1 class="font-bold text-2xl">Stays in Finland</h1>

@@ -22,9 +22,9 @@ function mostrarApartamentos() {
             alt="${carta.city}"
             class="rounded-3xl w-80 h-50 object-fill"
         /></span>
-        <div class="flex justify-between px-5 py-1">
+        <div class="flex justify-between px-5 py-1 lg:justify-even">
           <p class="text-gray-600">${carta.type}</p>
-          <p>⭐ ${carta.rating}</p>
+          <p class="pr-3">⭐ ${carta.rating}</p>
         </div>
         <div class="px-5">
           <p class="font-semibold">${carta.title}</p>
@@ -34,5 +34,19 @@ function mostrarApartamentos() {
   cardsApartamentos.innerHTML = htmlGenerado;
 }
 
-let variable = "hola";
+let filtros = document.querySelector("#filters");
+
+let inputUbicacion = document.querySelector("#input-location");
+inputUbicacion.addEventListener("click", mostrarFiltros);
+
+let inputHuespedes = document.querySelector("#input-guest");
+inputHuespedes.addEventListener("click", mostrarFiltros);
+
+let cerrarFiltros = document.querySelector("#close-button");
+cerrarFiltros.addEventListener("click", mostrarFiltros);
+
+function mostrarFiltros() {
+  filtros.classList.toggle("hidden");
+}
+
 export { compilarDatos, mostrarApartamentos };
