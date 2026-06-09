@@ -150,7 +150,7 @@ let apartamentosDisponibles = document.querySelector("#total-stays");
 function actualizarContador(listaDeApartamentos) {
   const total = listaDeApartamentos.length;
 
-  apartamentosDisponibles.innerHTML = `${total} stays`;
+  apartamentosDisponibles.textContent = `${total} stays`;
 }
 
 export {
