@@ -21,18 +21,21 @@
         <input
           type="text"
           readonly
-          class="p-2.5 rounded-l-2xl shadow w-33 outline-none"
+          class="p-2.5 rounded-l-2xl shadow w-33 outline-none cursor-pointer"
           placeholder="  Add location"
           id="input-location"
         />
         <input
-          class="p-2.5 shadow w-33 outline-none"
+          class="p-2.5 shadow w-33 outline-none cursor-pointer"
           type="text"
           readonly
           placeholder="   Add guests"
           id="input-guest"
         />
-        <button id="search-icon" class="p-3.5 shadow rounded-r-2xl lg:right-20">
+        <button
+          id="search-icon"
+          class="p-3.5 shadow cursor-pointer rounded-r-2xl lg:right-20"
+        >
           <img src="./designs/icons/search.svg" alt="search-icon" class="w-4" />
         </button>
       </span>
@@ -41,7 +44,7 @@
       id="filters"
       class="hidden absolute bg-white w-full py-6 px-6 top-0 z-50"
     >
-      <span class="flex justify-between">
+      <span class="flex justify-between cursor-pointer">
         <h2 class="font-semibold lg:hidden">Edit your search</h2>
         <img
           src="./designs/icons/cancel-close-delete-svgrepo-com.svg"
@@ -51,35 +54,40 @@
         />
       </span>
       <section class="w-full mt-4 relative lg:flex lg:px-8">
-        <div class="pt-6 pb-4 px-3 rounded-t-xl shadow lg:rounded-l-xl lg:w-90">
+        <div
+          class="pt-6 pb-4 px-3 rounded-t-xl shadow lg:rounded-l-xl lg:w-90 xl:w-[40%]"
+        >
           <label
-            for="Location"
+            for="place-filter"
             class="absolute text-[14px] font-semibold top-1 left-5 lg:left-13"
             >Location</label
           >
           <input
+            id="place-filter"
             type="text"
             placeholder="Where are you going?"
-            class="w-full outline-none pl-2"
+            class="w-full outline-none pl-2 cursor-pointer"
           />
         </div>
-        <div class="pt-6 pb-4 px-3 rounded-b-xl shadow lg:rounded-r-2xl">
+        <div
+          class="relative pt-6 pb-4 px-3 rounded-b-xl shadow lg:rounded-r-2xl lg:w-90 xl:w-[40%]"
+        >
           <label
-            for="Guests"
-            class="absolute text-[14px] font-semibold bottom-9 left-5 lg:left-3/7"
+            for="input-guests"
+            class="absolute text-[14px] font-semibold bottom-9 left-5"
             >Guests</label
           >
           <input
             type="text"
             readonly
-            placeholder="  "
-            class="w-full outline-none pl-2 lg:w-90"
+            placeholder="Add guests"
+            class="w-full outline-none cursor-pointer pl-2"
             id="input-guests"
           />
         </div>
         <span class="hidden w-full lg:flex lg:absolute lg:bottom-2 lg:left-5/6"
           ><div
-            class="flex mt-35 mbs-2.5 justify-center border py-2 px-2 w-30 gap-3 bg-[#e65757] text-white rounded-2xl active:bg-[#dd3838]"
+            class="flex cursor-pointer mt-35 mbs-2.5 justify-center border py-2 px-2 w-30 gap-3 bg-[#e65757] text-white rounded-2xl active:bg-[#dd3838]"
           >
             <img
               src="./designs/icons/icons8-search.svg"
@@ -100,14 +108,14 @@
           <div class="flex justify-between w-33 py-4 px-1">
             <button
               id="decrease-button"
-              class="bg-gray-300 w-6 rounded-md border border-gray-500 active:bg-gray-400"
+              class="bg-gray-300 w-6 rounded-md cursor-pointer border border-gray-500 active:bg-gray-400"
             >
               -
             </button>
             <p id="number">0</p>
             <button
               id="increase-btn"
-              class="bg-gray-300 w-6 rounded-md border border-gray-500 active:bg-gray-400"
+              class="bg-gray-300 w-6 rounded-md cursor-pointer border border-gray-500 active:bg-gray-400"
             >
               +
             </button>
@@ -119,14 +127,14 @@
           <div class="flex justify-between w-33 py-4 px-1">
             <button
               id="decrease-btn2"
-              class="bg-gray-300 w-6 rounded-md border border-gray-500 active:bg-gray-400"
+              class="bg-gray-300 w-6 rounded-md cursor-pointer border border-gray-500 active:bg-gray-400"
             >
               -
             </button>
             <p id="number1">0</p>
             <button
               id="increase-btn2"
-              class="bg-gray-300 w-6 rounded-md border border-gray-500 active:bg-gray-400"
+              class="bg-gray-300 w-6 rounded-md cursor-pointer border border-gray-500 active:bg-gray-400"
             >
               +
             </button>
@@ -135,7 +143,7 @@
       </section>
       <span class="w-full flex justify-center"
         ><div
-          class="flex mt-35 mbs-2.5 justify-center border py-2 px-2 w-30 gap-3 bg-[#e65757] text-white rounded-2xl active:bg-[#dd3838] lg:hidden"
+          class="flex cursor-pointer mt-35 mbs-2.5 justify-center border py-2 px-2 w-30 gap-3 bg-[#e65757] text-white rounded-2xl active:bg-[#dd3838] lg:hidden"
         >
           <img
             src="./designs/icons/icons8-search.svg"
@@ -157,7 +165,7 @@
       </section>
       <section
         id="cards-apartamentos"
-        class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 z-10"
+        class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 z-10 xl:grid-cols-5"
       ></section>
     </main>
   </body>

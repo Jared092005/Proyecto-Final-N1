@@ -2,6 +2,8 @@ import {
   compilarDatos,
   mostrarApartamentos,
   mostrarFiltros,
+  buscadorDeLugares,
+  cartas,
 } from "./funciones.js";
 
-mostrarApartamentos();
+mostrarApartamentos(cartas);

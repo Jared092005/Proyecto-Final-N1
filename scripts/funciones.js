@@ -7,7 +7,6 @@ async function compilarDatos() {
     console.error(`No se pudo compilar la informacion correctamente ${error}`);
   }
 }
-
 let cartas = await compilarDatos();
 
 let cardsApartamentos = document.querySelector("#cards-apartamentos");
@@ -16,15 +15,15 @@ let cardsApartamentos = document.querySelector("#cards-apartamentos");
  * Esta función lo que hace es mostrar cada una de las cartas en el html usando el stays.json
  */
 
-function mostrarApartamentos() {
+function mostrarApartamentos(listaDeApartamentos) {
   let htmlGenerado = "";
-  for (const carta of cartas) {
+  for (const carta of listaDeApartamentos) {
     htmlGenerado += ` <article class="flex flex-col gap-2 relative z-10">
      <span class="flex px-6"
           ><img
             src="${carta.photo}"
             alt="${carta.city}"
-            class="rounded-3xl w-80 h-50 object-fill"
+            class="rounded-3xl w-80 h-50 object-fill cursor-pointer active:scale-90 active:transition active: duration-200"
         /></span>
         <div class="flex justify-between px-8 py-1 lg:justify-even">
           <p class="text-gray-600">${carta.type}</p>
@@ -108,6 +107,7 @@ aumentar.addEventListener("click", () => {
   contadorBotones();
 });
 
+let totalHuespedes = 0;
 /**Esta función cuenta los dos botones y los junta para saber cuantos huespedes hay en total y buscar los
  * apartamentos en base a eso. */
 
@@ -115,13 +115,43 @@ function contadorBotones() {
   numeroContador.textContent = contadorAdultos;
   numeroContador2.textContent = contadorNinos;
 
-  let totalHuespedes = contadorAdultos + contadorNinos;
+  totalHuespedes = contadorAdultos + contadorNinos;
 
-  if (totalHuespedes <= 1) {
+  if (totalHuespedes <= 1 && totalHuespedes > 0) {
     inputHuespedesFiltro.value = `${totalHuespedes} guest`;
   } else {
     inputHuespedesFiltro.value = `${totalHuespedes} guests`;
   }
+  buscadorDeLugares();
 }
 
-export { compilarDatos, mostrarApartamentos, mostrarFiltros };
+let filtroLugares = document.querySelector("#place-filter");
+
+function buscadorDeLugares() {
+  let nombre = filtroLugares.value.toLowerCase();
+  cardsApartamentos.innerHTML = "";
+
+  let apartamentoFiltrados = cartas.filter((apartamento) => {
+    let coincideCiudad = apartamento.city.toLowerCase().includes(nombre);
+    let coincideHuespedes = apartamento.maxGuests >= totalHuespedes;
+
+    return coincideCiudad && coincideHuespedes;
+  });
+
+  mostrarApartamentos(apartamentoFiltrados);
+}
+/*  if (nombre !== "") {
+    nombreFiltrados = nombreFiltrados.filter((apartamento) => {
+      return apartamento.city.toLowerCase().includes(nombre);
+    });
+  } */
+filtroLugares.addEventListener("input", buscadorDeLugares);
+inputHuespedesFiltro.addEventListener("input", buscadorDeLugares);
+
+export {
+  compilarDatos,
+  mostrarApartamentos,
+  mostrarFiltros,
+  buscadorDeLugares,
+  cartas,
+};
