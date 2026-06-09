@@ -23,7 +23,7 @@ function mostrarApartamentos(listaDeApartamentos) {
           ><img
             src="${carta.photo}"
             alt="${carta.city}"
-            class="rounded-3xl w-80 h-50 object-fill cursor-pointer active:scale-90 active:transition active: duration-200"
+            class="rounded-3xl w-80 h-50 object-fill cursor-pointer active:scale-90 active:transition active:duration-200 hover:scale-105 hover:transition hover:ease-out hover:duration-250"
         /></span>
         <div class="flex justify-between px-8 py-1 lg:justify-even">
           <p class="text-gray-600">${carta.type}</p>
@@ -127,6 +127,7 @@ function contadorBotones() {
 
 let filtroLugares = document.querySelector("#place-filter");
 
+/**Esta función lo que hace es filtrar por lugares y también por cantidad de huespedes que el usuario ingresa */
 function buscadorDeLugares() {
   let nombre = filtroLugares.value.toLowerCase();
   cardsApartamentos.innerHTML = "";
@@ -137,16 +138,20 @@ function buscadorDeLugares() {
 
     return coincideCiudad && coincideHuespedes;
   });
-
+  actualizarContador(apartamentoFiltrados);
   mostrarApartamentos(apartamentoFiltrados);
 }
-/*  if (nombre !== "") {
-    nombreFiltrados = nombreFiltrados.filter((apartamento) => {
-      return apartamento.city.toLowerCase().includes(nombre);
-    });
-  } */
+
 filtroLugares.addEventListener("input", buscadorDeLugares);
 inputHuespedesFiltro.addEventListener("input", buscadorDeLugares);
+
+let apartamentosDisponibles = document.querySelector("#total-stays");
+
+function actualizarContador(listaDeApartamentos) {
+  const total = listaDeApartamentos.length;
+
+  apartamentosDisponibles.innerHTML = `${total} stays`;
+}
 
 export {
   compilarDatos,
