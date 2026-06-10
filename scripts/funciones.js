@@ -125,7 +125,49 @@ function contadorBotones() {
   buscadorDeLugares();
 }
 
+let contenedorSugerencias = document.querySelector("#suggestions-container");
+
+let sugerencias = document.querySelector("#suggestions");
+
 let filtroLugares = document.querySelector("#place-filter");
+
+filtroLugares.addEventListener("input", () => {
+  let texto = filtroLugares.value.toLowerCase();
+
+  if (texto === "") {
+    contenedorSugerencias.classList.toggle("hidden");
+    sugerencias.innerHTML = "";
+    return;
+  }
+
+  let apartamentosFiltrados = cartas.filter((apartamento) => {
+    return apartamento.city.toLowerCase().includes(texto);
+  });
+  mostrarSugerencias(apartamentosFiltrados);
+});
+
+function mostrarSugerencias(listaFiltrada) {
+  sugerencias.innerHTML = "";
+
+  if (listaFiltrada.length === 0) {
+    sugerencias.textContent = "No matches found";
+    contenedorSugerencias.classList.remove("hidden");
+    return;
+  }
+  contenedorSugerencias.classList.remove("hidden");
+
+  listaFiltrada.forEach((apartamento) => {
+    let item = sugerencias;
+
+    let textoCompleto = `${apartamento.city}, ${apartamento.country}`;
+    item.textContent = textoCompleto;
+    item.addEventListener("click", () => {
+      filtroLugares.value = textoCompleto;
+      contenedorSugerencias.classList.add("hidden");
+      sugerencias.textContent = "";
+    });
+  });
+}
 
 /**Esta función lo que hace es filtrar por lugares y también por cantidad de huespedes que el usuario ingresa */
 function buscadorDeLugares() {
