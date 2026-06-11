@@ -17,27 +17,50 @@ let cardsApartamentos = document.querySelector("#cards-apartamentos");
 
 function mostrarApartamentos(listaDeApartamentos) {
   let htmlGenerado = "";
+
   for (const carta of listaDeApartamentos) {
-    htmlGenerado += ` <article class="flex flex-col gap-2 relative z-10">
+    if (carta.superHost) {
+      htmlGenerado += ` <article class="flex flex-col gap-2 relative z-10">
      <span class="flex px-6"
           ><img
             src="${carta.photo}"
             alt="${carta.city}"
             class="rounded-3xl w-80 h-50 object-fill cursor-pointer active:scale-90 active:transition active:duration-200 hover:scale-105 hover:transition hover:ease-out hover:duration-250"
         /></span>
-        <div class="flex justify-between px-8 py-1 lg:justify-even">
-          <p class="text-gray-600">${carta.type}</p>
-          <p class="pr-1 flex"><img
+        <div class="w-full flex justify-between px-8 py-1 lg:justify-even">
+        <p class="border border-gray-700 p-2 rounded-2xl text-[12px]">SUPERHOST</p>
+          <p class="text-gray-600 pt-1.5">${carta.type}</p>
+          <p class="flex pt-1"><img
             src="./designs/icons/star.svg"
             alt="rating"
-            class="w-5"/> ${carta.rating}</p>
+            class="w-5 pb-1.5"/> ${carta.rating}</p>
         </div>
         <div class="px-8">
           <p class="font-semibold">${carta.title}</p>
         </div>
         </article>`;
+    } else {
+      htmlGenerado += ` <article class="flex flex-col gap-2 relative z-10">
+     <span class="flex px-6"
+          ><img
+            src="${carta.photo}"
+            alt="${carta.city}"
+            class="rounded-3xl w-80 h-50 object-fill cursor-pointer active:scale-90 active:transition active:duration-200 hover:scale-105 hover:transition hover:ease-out hover:duration-250"
+        /></span>
+        <div class="w-full flex justify-between px-8 py-1 lg:justify-even">
+          <p class="text-gray-600 pt-1.5">${carta.type}</p>
+          <p class="flex pt-1"><img
+            src="./designs/icons/star.svg"
+            alt="rating"
+            class="w-5 pb-1.5"/> ${carta.rating}</p>
+        </div>
+        <div class="px-8">
+          <p class="font-semibold">${carta.title}</p>
+        </div>
+        </article>`;
+    }
+    cardsApartamentos.innerHTML = htmlGenerado;
   }
-  cardsApartamentos.innerHTML = htmlGenerado;
 }
 
 let filtros = document.querySelector("#filters");
