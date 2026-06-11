@@ -64,7 +64,6 @@ function mostrarApartamentos(listaDeApartamentos) {
     `;
   }
 
-  // Se asigna al contenedor una sola vez AL FINAL del bucle por rendimiento
   cardsApartamentos.innerHTML = htmlGenerado;
 }
 
