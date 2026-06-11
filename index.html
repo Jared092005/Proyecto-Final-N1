@@ -76,7 +76,7 @@
           </div>
         </div>
         <div
-          class="relative pt-6 pb-4 px-3 rounded-b-xl shadow lg:rounded-r-2xl lg:w-90 xl:w-[40%]"
+          class="relative active:outline-1 not-first-of-type:pt-6 pb-4 px-3 rounded-b-xl shadow lg:rounded-r-2xl lg:w-90 xl:w-[40%]"
         >
           <label
             for="input-guests"
@@ -87,11 +87,13 @@
             type="text"
             readonly
             placeholder="Add guests"
-            class="w-full outline-none cursor-pointer pl-2"
+            class="w-full cursor-pointer outline-none pl-2"
             id="input-guests"
           />
         </div>
-        <span class="hidden w-full lg:flex lg:absolute lg:bottom-2 lg:left-5/6"
+        <span
+          id="btn-search"
+          class="hidden w-full lg:flex lg:absolute lg:bottom-2 lg:left-5/6"
           ><div
             class="flex cursor-pointer mt-35 mbs-2.5 justify-center border py-2 px-2 w-30 gap-3 bg-[#e65757] text-white rounded-2xl active:bg-[#dd3838]"
           >
@@ -106,7 +108,7 @@
       </section>
       <section
         id="filter-container"
-        class="flex flex-col mt-8 lg:justify-center"
+        class="flex flex-col mt-8 lg:justify-center lg:hidden"
       >
         <span class="w-full lg:flex lg:flex-col lg:items-center"
           ><h2 class="font-semibold">Adults</h2>

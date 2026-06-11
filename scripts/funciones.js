@@ -42,6 +42,8 @@ function mostrarApartamentos(listaDeApartamentos) {
 
 let filtros = document.querySelector("#filters");
 
+let contendorFiltros = document.querySelector("#filter-container");
+
 let inputUbicacion = document.querySelector("#input-location");
 inputUbicacion.addEventListener("click", mostrarFiltros);
 
@@ -58,13 +60,21 @@ const cambioFondo = document.querySelector("#background-opacity");
 
 /**Esta función hace que el section con la clase "hidden" cambie y aparezcan los filtros que queremos utilizar */
 
-function mostrarFiltros() {
+function mostrarFiltros(e) {
+  if (e) e.stopPropagation();
+
   filtros.classList.toggle("hidden");
   cambioFondo.classList.toggle("hidden");
 }
 
-let contendorFiltros = document.querySelector("#filter-container");
+function mostrarContadores(e) {
+  if (e) e.stopPropagation();
+
+  contendorFiltros.classList.toggle("lg:hidden");
+}
+
 let inputHuespedesFiltro = document.querySelector("#input-guests");
+inputHuespedesFiltro.addEventListener("click", mostrarContadores);
 
 let contadorAdultos = 0;
 let contadorNinos = 0;
@@ -169,23 +179,34 @@ function mostrarSugerencias(listaFiltrada) {
   });
 }
 
+let botonSearch = document.querySelector("#btn-search");
+
 /**Esta función lo que hace es filtrar por lugares y también por cantidad de huespedes que el usuario ingresa */
 function buscadorDeLugares() {
   let nombre = filtroLugares.value.toLowerCase();
   cardsApartamentos.innerHTML = "";
 
   let apartamentoFiltrados = cartas.filter((apartamento) => {
-    let coincideCiudad = apartamento.city.toLowerCase().includes(nombre);
+    let ubicacionApartamento =
+      `${apartamento.city}, ${apartamento.country}`.toLowerCase();
+
+    let coincideCiudad = ubicacionApartamento.includes(nombre);
     let coincideHuespedes = apartamento.maxGuests >= totalHuespedes;
 
     return coincideCiudad && coincideHuespedes;
   });
+
   actualizarContador(apartamentoFiltrados);
   mostrarApartamentos(apartamentoFiltrados);
 }
 
 filtroLugares.addEventListener("input", buscadorDeLugares);
 inputHuespedesFiltro.addEventListener("input", buscadorDeLugares);
+botonSearch.addEventListener("click", (e) => {
+  e.preventDefault();
+  mostrarFiltros();
+  buscadorDeLugares();
+});
 
 let apartamentosDisponibles = document.querySelector("#total-stays");
 
