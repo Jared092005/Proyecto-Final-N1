@@ -19,49 +19,53 @@ function mostrarApartamentos(listaDeApartamentos) {
   let htmlGenerado = "";
 
   for (const carta of listaDeApartamentos) {
-    if (carta.superHost) {
-      htmlGenerado += ` <article class="flex flex-col gap-2 relative z-10">
-     <span class="flex px-6"
-          ><img
-            src="${carta.photo}"
-            alt="${carta.city}"
-            class="rounded-3xl w-80 h-50 object-cover cursor-pointer active:scale-90 active:transition active:duration-200 hover:scale-105 hover:transition hover:ease-out hover:duration-250"
-        /></span>
-        <div class="w-full flex justify-between px-8 py-1 lg:justify-even">
-        <p class="border border-gray-700 p-2 rounded-2xl text-[12px]">SUPERHOST</p>
-          <p class="text-gray-600 pt-1.5">${carta.type}</p>
-          <p class="flex pt-1"><img
-            src="./designs/icons/star.svg"
-            alt="rating"
-            class="w-5 pb-1.5"/> ${carta.rating}</p>
+    htmlGenerado += `
+      <article class="flex flex-col group gap-3 cursor-pointer bg-white rounded-3xl overflow-hidden pb-2 px-6">
+        
+        <div class="w-full aspect-4/3 rounded-3xl overflow-hidden bg-gray-100 shadow-sm">
+          <img 
+            src="${carta.photo}" 
+            alt="${carta.city}" 
+            loading="lazy"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
         </div>
-        <div class="px-8">
-          <p class="font-semibold">${carta.title}</p>
+        
+        <div class="w-full flex justify-between items-center text-sm px-2 mt-1">
+          <div class="flex items-center gap-2">
+            ${
+              carta.superHost
+                ? `
+              <span class="text-[10px] font-bold text-[#4f4f4f] uppercase border-2 border-[#4f4f4f] rounded-full px-2 py-0.5 tracking-wider shrink-0">
+                SUPERHOST
+              </span>
+            `
+                : ""
+            }
+            
+            <span class="text-gray-500 font-medium line-clamp-1">
+              ${carta.type}
+            </span>
+          </div>
+          
+          <div class="flex items-center gap-1 shrink-0">
+            <img src="./designs/icons/star.svg" alt="rating" class="w-4 h-4" />
+            <span class="text-gray-700 font-semibold">${carta.rating.toFixed(2)}</span>
+          </div>
         </div>
-        </article>`;
-    } else {
-      htmlGenerado += ` <article class="flex flex-col gap-2 relative z-10">
-     <span class="flex px-6"
-          ><img
-            src="${carta.photo}"
-            alt="${carta.city}"
-            class="rounded-3xl w-80 h-50 object-cover cursor-pointer active:scale-90 active:transition active:duration-200 hover:scale-105 hover:transition hover:ease-out hover:duration-250"
-        /></span>
-        <div class="w-full flex justify-between px-8 py-1 lg:justify-even">
-          <p class="text-gray-600 pt-1.5">${carta.type}</p>
-          <p class="flex pt-1"><img
-            src="./designs/icons/star.svg"
-            alt="rating"
-            class="w-5 pb-0.5"/> ${carta.rating}</p>
+        
+        <div class="px-2">
+          <h2 class="text-base font-semibold text-[#333333] line-clamp-1 group-hover:text-gray-500 transition-colors">
+            ${carta.title}
+          </h2>
+        </div>
 
-        </div>
-        <div class="px-8">
-          <p class="font-semibold">${carta.title}</p>
-        </div>
-        </article>`;
-    }
-    cardsApartamentos.innerHTML = htmlGenerado;
+      </article>
+    `;
   }
+
+  // Se asigna al contenedor una sola vez AL FINAL del bucle por rendimiento
+  cardsApartamentos.innerHTML = htmlGenerado;
 }
 
 let filtros = document.querySelector("#filters");
@@ -84,16 +88,13 @@ const cambioFondo = document.querySelector("#background-opacity");
 
 /**Esta función hace que el section con la clase "hidden" cambie y aparezcan los filtros que queremos utilizar */
 
-function mostrarFiltros(e) {
-  if (e) e.stopPropagation();
-
+function mostrarFiltros() {
   filtros.classList.toggle("hidden");
   cambioFondo.classList.toggle("hidden");
 }
 
-function mostrarContadores(e) {
-  if (e) e.stopPropagation();
-
+/** Esta función lo que hace es mostrar los contadores cuando le damos click al input para que de esa manera podamos sumar*/
+function mostrarContadores() {
   contendorFiltros.classList.toggle("lg:hidden");
 }
 
