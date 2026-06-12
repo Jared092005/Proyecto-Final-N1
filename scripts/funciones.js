@@ -105,10 +105,10 @@ let contadorNinos = 0;
 
 let descontar = document.querySelector("#decrease-button");
 
-//este addEventListener lo que hace es verificar si el numero que está dentro es positivo, si no lanza un mensaje que dice error. También descuenta del número actual
+//este addEventListener lo que hace es verificar si el numero que está dentro es positivo, si no lanza un mensaje "0". También descuenta del número actual
 descontar.addEventListener("click", () => {
   if (contadorAdultos <= 0) {
-    return (numeroContador.textContent = `Error`);
+    return (numeroContador.textContent = `0`);
   }
   contadorAdultos--;
   contadorBotones();
@@ -128,7 +128,7 @@ let descontar2 = document.querySelector("#decrease-btn2");
 
 descontar2.addEventListener("click", () => {
   if (contadorNinos <= 0) {
-    return (numeroContador2.textContent = `Error`);
+    return (numeroContador2.textContent = `0`);
   }
   contadorNinos--;
   contadorBotones();
@@ -142,6 +142,7 @@ aumentar.addEventListener("click", () => {
 });
 
 let totalHuespedes = 0;
+
 /**Esta función cuenta los dos botones y los junta para saber cuantos huespedes hay en total y buscar los
  * apartamentos en base a eso. */
 
@@ -179,6 +180,8 @@ filtroLugares.addEventListener("input", () => {
   });
   mostrarSugerencias(apartamentosFiltrados);
 });
+
+/**Esta función lo que hace es mostrar las sugerencias cuando escribimos algo, y si hacemos click en la sugerencia se autocompleta */
 
 function mostrarSugerencias(listaFiltrada) {
   sugerencias.innerHTML = "";
