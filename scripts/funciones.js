@@ -49,7 +49,7 @@ function mostrarApartamentos(listaDeApartamentos) {
           </div>
           
           <div class="flex items-center gap-1 shrink-0">
-            <img src="./designs/icons/star.svg" alt="rating" class="w-4 h-4" />
+            <img src="./icons/star.svg" alt="rating" class="w-4 h-4" />
             <span class="text-gray-700 font-semibold">${carta.rating.toFixed(2)}</span>
           </div>
         </div>
